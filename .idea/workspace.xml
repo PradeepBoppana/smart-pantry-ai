@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment="&quot;🚀 Smart Pantry AI MVP&quot;" />
+    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment="&quot;🚀 Mobile Smart Pantry AI MVP&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,22 +18,81 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "PradeepBoppana"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PradeepBoppana&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/PradeepBoppana/smart-pantry-ai",
-    "accountId": "f75cafe9-a89e-479f-99e3-09a0771fad7e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PradeepBoppana/smart-pantry-ai&quot;,
+    &quot;accountId&quot;: &quot;f75cafe9-a89e-479f-99e3-09a0771fad7e&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+}</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0" />
+      <entry key="M15" value="1.0" />
+      <entry key="M30" value="1.0" />
+      <entry key="H1" value="1.0" />
+      <entry key="H2" value="1.0" />
+      <entry key="H4" value="1.0" />
+      <entry key="D1" value="1.0" />
+      <entry key="W1" value="1.0" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9726549474122855" />
+      <entry key="MS500" value="0.9944701686732144" />
+      <entry key="S2" value="0.9986146661010289" />
+      <entry key="S5" value="0.9994456359721023" />
+      <entry key="S10" value="0.9997227795604651" />
+      <entry key="S30" value="0.9999075846464872" />
+      <entry key="S60" value="0.9999537912556196" />
+      <entry key="M2" value="0.9999768953608976" />
+      <entry key="M5" value="0.9999907580802994" />
+      <entry key="M10" value="0.999995379029473" />
+      <entry key="M15" value="0.9999969193506094" />
+      <entry key="M30" value="0.9999984596741184" />
+      <entry key="H1" value="0.9999992298367626" />
+      <entry key="H2" value="0.9999996149183071" />
+      <entry key="H4" value="0.9999998074591351" />
+      <entry key="D1" value="0.9999999679098532" />
+      <entry key="W1" value="0.9999999954156933" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3E3OxTCtPrtzj3QwnuYCJVahgf6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -45,7 +109,7 @@
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/pradeepboppana/IdeaProjects/smart-pantry-ai",
+    "last_opened_file_path": "/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/mobile",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,11 +117,13 @@
     "nodejs_interpreter_path": "/Users/pradeepboppana/Library/Application Support/JetBrains/IntelliJIdea2026.1/node/versions/24.16.0/bin/node",
     "nodejs_package_manager_path": "npm",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/mobile/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mobile" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -76,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779404032404</updated>
-      <workItem from="1779404033423" duration="4921000" />
+      <workItem from="1779404033423" duration="5699000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;🚀 Smart Pantry AI MVP&quot;">
       <option name="closed" value="true" />
@@ -94,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779426265951</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="&quot;🚀 Mobile Smart Pantry AI MVP&quot;">
+      <option name="closed" value="true" />
+      <created>1779426980166</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1779426980166</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +187,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot; Smart Pantry AI MVP&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot; Smart Pantry AI MVP&quot;" />
+    <MESSAGE value="&quot; Mobile Smart Pantry AI MVP&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot; Mobile Smart Pantry AI MVP&quot;" />
   </component>
 </project>

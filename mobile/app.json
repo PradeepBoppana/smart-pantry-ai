@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#FDFAF6"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.smartpantry.ai",
@@ -26,13 +28,17 @@
         "backgroundColor": "#FDFAF6"
       },
       "package": "com.smartpantry.ai",
-      "permissions": ["CAMERA"]
+      "permissions": [
+        "CAMERA"
+      ]
     },
     "plugins": [
       "expo-router",
       "expo-camera",
       "expo-image-picker",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-asset",
+      "expo-font"
     ]
   }
 }
