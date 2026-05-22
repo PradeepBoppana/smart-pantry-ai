@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Smart Pantry AI</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥕</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#FDFAF6;--bg-card:#FFFFFF;--bg-muted:#F5F0E8;--bg-warm:#FFF8F0;
+--text:#2D2417;--text-sec:#7A6E5D;--text-muted:#B5A898;
+--accent:#E07B3C;--accent-hover:#C96A2F;
+--green:#4A8C5C;--green-bg:#EFF7F1;
+--red:#C44B3F;--red-bg:#FDF0EE;
+--amber:#C48A2A;--amber-bg:#FFF8EB;
+--blue:#3B7BC0;--blue-bg:#EFF5FC;
+--border:#E8E0D4;--border-light:#F0EBE3;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+.container{max-width:480px;margin:0 auto;padding:0 16px 90px}
+.header{padding:20px 0 12px;display:flex;align-items:center;justify-content:space-between}
+.header h1{font-size:22px;font-weight:700;letter-spacing:-0.3px}
+.header p{font-size:13px;color:var(--text-sec);margin-top:2px}
+.card{background:var(--bg-card);border-radius:14px;padding:16px;margin-bottom:10px;border:1px solid var(--border-light)}
+.btn{padding:14px 24px;border-radius:12px;border:none;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;width:100%}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-sec{padding:10px 20px;border-radius:10px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;width:auto}
+.btn-sm{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+input,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg-card);color:var(--text);transition:border-color 0.2s}
+input:focus,select:focus{border-color:var(--accent)}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.item-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light)}
+.item-row:last-child{border-bottom:none}
+.item-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.item-info{flex:1;min-width:0}
+.item-name{font-size:14px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item-meta{font-size:12px;color:var(--text-sec);margin-top:2px}
+.empty{text-align:center;padding:48px 24px;color:var(--text-muted)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.label{font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.stat-card{border-radius:12px;padding:14px 12px;text-align:center}
+.stat-num{font-size:24px;font-weight:700}
+.stat-label{font-size:11px;color:var(--text-sec);margin-top:2px}
+.tabs-toggle{display:flex;background:var(--bg-muted);border-radius:10px;padding:3px;margin-bottom:20px}
+.tabs-toggle button{flex:1;padding:10px;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px;font-family:'DM Sans',sans-serif;background:transparent;color:var(--text-muted);transition:all 0.2s}
+.tabs-toggle button.active{background:var(--bg-card);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.score-circle{width:120px;height:120px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 20px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:6px 0 max(env(safe-area-inset-bottom),8px);z-index:100}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 12px;border:none;background:none;cursor:pointer;font-size:10px;font-weight:400;font-family:'DM Sans',sans-serif;color:var(--text-muted);transition:all 0.2s}
+.nav button.active{color:var(--accent);font-weight:600}
+.nav button .icon{font-size:22px}
+.hidden{display:none}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.spinning{animation:spin 1.5s linear infinite;display:inline-block}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+const API = "http://localhost:3000/api";
+let state = { user: null, token: null, tab: "pantry", pantryItems: [], shopList: null, dontBuy: [] };
+
+const CATS = {dairy:"🥛",meat:"🥩",vegetables:"🥬",fruits:"🍎",grains:"🌾",beverages:"🥤",snacks:"🍪",condiments:"🧂",frozen:"🧊",other:"📦"};
+const CAT_BG = {dairy:"var(--blue-bg)",meat:"var(--red-bg)",vegetables:"var(--green-bg)",fruits:"var(--amber-bg)"};
+
+function catIcon(c){return CATS[c]||"📦"}
+function catBg(c){return CAT_BG[c]||"var(--bg-muted)"}
+function urgColor(u){return u==="expired"||u==="critical"?"var(--red)":u==="warning"?"var(--amber)":"var(--green)"}
+function urgBg(u){return u==="expired"||u==="critical"?"var(--red-bg)":u==="warning"?"var(--amber-bg)":"var(--green-bg)"}
+
+// Load saved session
+try{
+  const t=localStorage.getItem("sp_token");
+  const u=localStorage.getItem("sp_user");
+  if(t&&u){state.token=t;state.user=JSON.parse(u)}
+}catch(e){}
+
+async function apiFetch(path,opts={}){
+  const h={"Content-Type":"application/json",...opts.headers};
+  if(state.token)h["Authorization"]=`Bearer ${state.token}`;
+  const r=await fetch(API+path,{...opts,headers:h});
+  const d=await r.json();
+  if(!r.ok)throw new Error(d.error||"Request failed");
+  return d;
+}
+
+// ========== RENDER ==========
+function render(){
+  const app=document.getElementById("app");
+  if(!state.user){app.innerHTML=renderAuth();bindAuth();return}
+  app.innerHTML=`
+    <div class="container" id="main-content"></div>
+    <nav class="nav">
+      ${["pantry|🏠|Pantry","scan|📸|Scan","recipes|🍳|Cook","shopping|🛒|Shop","stats|📊|Stats"].map(t=>{
+        const[id,icon,label]=t.split("|");
+        return`<button class="${state.tab===id?"active":""}" onclick="switchTab('${id}')"><span class="icon">${icon}</span>${label}</button>`;
+      }).join("")}
+    </nav>`;
+  const mc=document.getElementById("main-content");
+  if(state.tab==="pantry"){mc.innerHTML=renderPantry();loadPantry()}
+  else if(state.tab==="scan"){mc.innerHTML=renderScan();bindScan()}
+  else if(state.tab==="recipes"){mc.innerHTML=renderRecipes()}
+  else if(state.tab==="shopping"){mc.innerHTML=renderShopping();loadShopping()}
+  else if(state.tab==="stats"){mc.innerHTML=renderStats();loadStats()}
+}
+
+function switchTab(t){state.tab=t;render()}
+
+// ========== AUTH ==========
+function renderAuth(){return`
+<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px">
+<div style="width:100%;max-width:400px">
+  <div style="text-align:center;margin-bottom:36px">
+    <div style="font-size:56px;margin-bottom:8px">🥕</div>
+    <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:4px">Smart Pantry AI</h1>
+    <p style="color:var(--text-sec);font-size:14px">Your kitchen memory</p>
+  </div>
+  <div class="card" style="padding:24px">
+    <div class="tabs-toggle" id="auth-tabs">
+      <button class="active" onclick="toggleAuth(true)">Login</button>
+      <button onclick="toggleAuth(false)">Register</button>
+    </div>
+    <div id="name-field" class="hidden" style="margin-bottom:12px">
+      <label style="font-size:12px;font-weight:500;color:var(--text-sec);display:block;margin-bottom:6px">Name</label>
+      <input id="a-name" placeholder="Your name">
+    </div>
+    <div style="margin-bottom:12px">
+      <label style="font-size:12px;font-weight:500;color:var(--text-sec);display:block;margin-bottom:6px">Email</label>
+      <input id="a-email" type="email" placeholder="you@email.com">
+    </div>
+    <div style="margin-bottom:20px">
+      <label style="font-size:12px;font-weight:500;color:var(--text-sec);display:block;margin-bottom:6px">Password</label>
+      <input id="a-pass" type="password" placeholder="••••••••">
+    </div>
+    <div id="auth-error" style="display:none;background:var(--red-bg);color:var(--red);padding:8px 12px;border-radius:10px;font-size:12px;margin-bottom:14px;text-align:center"></div>
+    <button class="btn btn-primary" id="auth-btn" onclick="doAuth()">Sign In</button>
+  </div>
+  <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:16px">Backend must be running on localhost:3000</p>
+</div>
+</div>`}
+
+let isLogin=true;
+function toggleAuth(login){
+  isLogin=login;
+  document.querySelectorAll("#auth-tabs button").forEach((b,i)=>b.classList.toggle("active",login?i===0:i===1));
+  document.getElementById("name-field").classList.toggle("hidden",login);
+  document.getElementById("auth-btn").textContent=login?"Sign In":"Create Account";
+}
+
+function bindAuth(){
+  document.getElementById("a-pass")?.addEventListener("keydown",e=>{if(e.key==="Enter")doAuth()});
+}
+
+async function doAuth(){
+  const btn=document.getElementById("auth-btn");
+  const err=document.getElementById("auth-error");
+  err.style.display="none";btn.textContent="Please wait...";btn.disabled=true;
+  try{
+    const path=isLogin?"/auth/login":"/auth/register";
+    const body=isLogin
+      ?{email:document.getElementById("a-email").value,password:document.getElementById("a-pass").value}
+      :{name:document.getElementById("a-name").value,email:document.getElementById("a-email").value,password:document.getElementById("a-pass").value};
+    const data=await apiFetch(path,{method:"POST",body:JSON.stringify(body)});
+    state.token=data.token;state.user=data.user;
+    localStorage.setItem("sp_token",data.token);
+    localStorage.setItem("sp_user",JSON.stringify(data.user));
+    state.tab="pantry";render();
+  }catch(e){err.textContent="⚠️ "+e.message;err.style.display="block"}
+  btn.textContent=isLogin?"Sign In":"Create Account";btn.disabled=false;
+}
+
+// ========== PANTRY ==========
+function renderPantry(){return`
+<div class="header"><div><h1>My Pantry</h1><p id="pantry-count">Loading...</p></div>
+<button class="btn-sec" onclick="toggleAddItem()">+ Add</button></div>
+<div id="add-form" class="hidden">
+  <div class="card" style="background:var(--bg-warm)">
+    <div style="font-size:14px;font-weight:600;margin-bottom:12px">Add item manually</div>
+    <input id="ni-name" placeholder="Item name (e.g. Milk)" style="margin-bottom:8px">
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <select id="ni-cat" style="flex:1">${Object.keys(CATS).map(c=>`<option value="${c}">${catIcon(c)} ${c}</option>`).join("")}</select>
+      <input id="ni-qty" type="number" value="1" style="width:60px">
+      <select id="ni-unit" style="width:80px">${["item","lb","oz","gal","ct","bag","box","can","bottle"].map(u=>`<option value="${u}">${u}</option>`).join("")}</select>
+    </div>
+    <input id="ni-exp" type="date" style="margin-bottom:12px">
+    <button class="btn btn-primary" onclick="addItem()">Add to Pantry</button>
+  </div>
+</div>
+<div id="expiring-banner"></div>
+<div id="pantry-list"></div>
+<div style="text-align:center;padding:16px 0 4px">
+  <button class="btn-sm" style="color:var(--text-muted);font-size:11px" onclick="logout()">Sign Out (${state.user?.name||""})</button>
+</div>`}
+
+function toggleAddItem(){document.getElementById("add-form").classList.toggle("hidden")}
+
+async function addItem(){
+  const name=document.getElementById("ni-name").value;
+  if(!name.trim())return;
+  try{
+    await apiFetch("/pantry",{method:"POST",body:JSON.stringify({
+      name,category:document.getElementById("ni-cat").value,
+      quantity:Number(document.getElementById("ni-qty").value),
+      unit:document.getElementById("ni-unit").value,
+      expiryDate:document.getElementById("ni-exp").value||undefined
+    })});
+    document.getElementById("ni-name").value="";
+    document.getElementById("add-form").classList.add("hidden");
+    loadPantry();
+  }catch(e){alert(e.message)}
+}
+
+async function loadPantry(){
+  try{
+    const data=await apiFetch("/pantry");
+    state.pantryItems=data.items||[];
+    document.getElementById("pantry-count").textContent=`${state.pantryItems.length} items tracked`;
+    
+    const exp=state.pantryItems.filter(i=>i.urgency==="critical"||i.urgency==="warning");
+    document.getElementById("expiring-banner").innerHTML=exp.length?`
+      <div class="card" style="background:var(--amber-bg);border:1px solid rgba(196,138,42,0.2)">
+        <div style="font-size:13px;font-weight:600;color:var(--amber);margin-bottom:8px">⚠️ Expiring soon (${exp.length})</div>
+        ${exp.slice(0,3).map(i=>`<div style="font-size:13px;margin-bottom:4px">${catIcon(i.category)} ${i.name} — <span style="color:${urgColor(i.urgency)};font-weight:600">${i.daysLeft<=0?"Expired!":i.daysLeft+"d left"}</span></div>`).join("")}
+      </div>`:"";
+    
+    document.getElementById("pantry-list").innerHTML=state.pantryItems.length===0?`
+      <div class="empty"><div class="empty-icon">🛒</div><div style="font-size:15px;font-weight:500;color:var(--text-sec);margin-bottom:6px">Your pantry is empty</div><div style="font-size:13px">Scan groceries or add items manually</div></div>
+    `:`<div class="card"><div class="label">All Items</div>
+      ${state.pantryItems.map(i=>`
+        <div class="item-row">
+          <div class="item-icon" style="background:${catBg(i.category)}">${catIcon(i.category)}</div>
+          <div class="item-info"><div class="item-name">${i.name}</div>
+          <div class="item-meta" style="color:${urgColor(i.urgency)}">${i.quantity} ${i.unit} · ${i.daysLeft!=null?(i.daysLeft<=0?"Expired":i.daysLeft+"d left"):"No expiry"}</div></div>
+          <span class="badge" style="background:${urgBg(i.urgency)};color:${urgColor(i.urgency)}">${i.daysLeft!=null?(i.daysLeft<=0?"!":i.daysLeft+"d"):"—"}</span>
+          <button class="btn-sm" style="font-size:11px;padding:4px 10px" onclick="markUsed('${i.id}')" title="Mark used">✓</button>
+        </div>`).join("")}
+    </div>`;
+  }catch(e){console.error(e)}
+}
+
+async function markUsed(id){
+  try{await apiFetch(`/pantry/${id}/use`,{method:"POST",body:JSON.stringify({})});loadPantry()}catch(e){alert(e.message)}
+}
+
+// ========== SCAN ==========
+let scanType="photo";
+function renderScan(){return`
+<div class="header"><div><h1>Scan Groceries</h1><p>Photo or receipt — AI detects everything</p></div></div>
+<div id="scan-content">
+  <div style="display:flex;gap:8px;margin-bottom:16px">
+    <div class="card" style="flex:1;text-align:center;cursor:pointer;border:2px solid var(--accent);background:var(--bg-warm)" id="scan-photo" onclick="setScanType('photo')">
+      <div style="font-size:28px;margin-bottom:4px">📸</div><div style="font-size:13px;font-weight:600">Grocery Photo</div>
+    </div>
+    <div class="card" style="flex:1;text-align:center;cursor:pointer" id="scan-receipt" onclick="setScanType('receipt')">
+      <div style="font-size:28px;margin-bottom:4px">🧾</div><div style="font-size:13px;font-weight:600">Receipt</div>
+    </div>
+  </div>
+  <div class="card" style="text-align:center;padding:48px 24px;cursor:pointer;border:2px dashed rgba(224,123,60,0.3);background:var(--bg-warm)" onclick="document.getElementById('scan-input').click()">
+    <div style="font-size:48px;margin-bottom:8px" id="scan-emoji">📸</div>
+    <div style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:4px">Tap to upload</div>
+    <div style="font-size:12px;color:var(--text-muted)">AI will detect all items automatically</div>
+  </div>
+  <input type="file" id="scan-input" accept="image/*" capture="environment" style="display:none">
+  <div class="card" style="margin-top:12px;background:var(--blue-bg)">
+    <div style="font-size:13px;color:var(--blue);line-height:1.6"><strong>💡 Tip:</strong> Make sure OPENAI_API_KEY is set in your .env file. Spread groceries on a table for best results.</div>
+  </div>
+</div>
+<div id="scan-loading" class="hidden" style="text-align:center;padding:64px 24px">
+  <div style="font-size:48px;margin-bottom:16px" class="spinning">🔍</div>
+  <div style="font-size:15px;font-weight:600">AI is analyzing...</div>
+  <div style="font-size:13px;color:var(--text-sec);margin-top:4px">This may take a few seconds</div>
+</div>
+<div id="scan-results" class="hidden"></div>`}
+
+function setScanType(t){
+  scanType=t;
+  document.getElementById("scan-photo").style.border=t==="photo"?"2px solid var(--accent)":"1px solid var(--border-light)";
+  document.getElementById("scan-photo").style.background=t==="photo"?"var(--bg-warm)":"var(--bg-card)";
+  document.getElementById("scan-receipt").style.border=t==="receipt"?"2px solid var(--accent)":"1px solid var(--border-light)";
+  document.getElementById("scan-receipt").style.background=t==="receipt"?"var(--bg-warm)":"var(--bg-card)";
+  document.getElementById("scan-emoji").textContent=t==="photo"?"📸":"🧾";
+}
+
+function bindScan(){
+  document.getElementById("scan-input")?.addEventListener("change",async e=>{
+    const file=e.target.files[0];if(!file)return;
+    document.getElementById("scan-content").classList.add("hidden");
+    document.getElementById("scan-loading").classList.remove("hidden");
+    const fd=new FormData();fd.append("image",file);
+    try{
+      const r=await fetch(`${API}/scan/${scanType}`,{method:"POST",headers:{"Authorization":`Bearer ${state.token}`},body:fd});
+      const data=await r.json();if(!r.ok)throw new Error(data.error);
+      document.getElementById("scan-loading").classList.add("hidden");
+      document.getElementById("scan-results").classList.remove("hidden");
+      window._scanData=data;
+      document.getElementById("scan-results").innerHTML=`
+        <div class="card" style="background:var(--green-bg);border:1px solid rgba(74,140,92,0.2)">
+          <div style="font-size:14px;font-weight:600;color:var(--green)">✅ Detected ${data.items?.length||0} items</div>
+        </div>
+        <div class="card">
+          ${(data.items||[]).map((it,i)=>`
+            <div class="item-row">
+              <div class="item-icon" style="background:${catBg(it.category)}">${catIcon(it.category)}</div>
+              <div class="item-info"><div class="item-name">${it.name}</div>
+              <div class="item-meta">${it.quantity||1} ${it.unit||"item"} · expires ${it.expiryDate||"?"}</div></div>
+              <span class="badge" style="background:var(--green-bg);color:var(--green)">${Math.round((it.confidence||0.9)*100)}%</span>
+            </div>`).join("")}
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-sec" style="flex:1" onclick="switchTab('scan')">Cancel</button>
+          <button class="btn btn-primary" style="flex:2" onclick="confirmScan()">✓ Add All to Pantry</button>
+        </div>`;
+    }catch(err){
+      alert("Scan failed: "+err.message+"\n\nMake sure OPENAI_API_KEY is set in .env");
+      document.getElementById("scan-loading").classList.add("hidden");
+      document.getElementById("scan-content").classList.remove("hidden");
+    }
+  });
+}
+
+async function confirmScan(){
+  const data=window._scanData;if(!data?.items?.length)return;
+  try{
+    await apiFetch("/pantry/bulk",{method:"POST",body:JSON.stringify({
+      items:data.items.map(i=>({name:i.name,category:i.category||"other",quantity:i.quantity||1,unit:i.unit||"item",expiryDate:i.expiryDate,confidence:i.confidence})),
+      scanSessionId:data.scanSessionId
+    })});
+    alert(`✅ ${data.items.length} items added!`);
+    state.tab="pantry";render();
+  }catch(e){alert(e.message)}
+}
+
+// ========== RECIPES ==========
+let recipes=[];
+function renderRecipes(){return`
+<div class="header"><div><h1>Cook Now</h1><p>AI recipes from your pantry</p></div></div>
+<div id="recipe-content">
+  <div class="card" style="text-align:center;padding:36px 24px;background:var(--bg-warm)">
+    <div style="font-size:48px;margin-bottom:12px">🍳</div>
+    <div style="font-size:15px;font-weight:600;margin-bottom:6px">What can I cook tonight?</div>
+    <div style="font-size:13px;color:var(--text-sec);margin-bottom:20px;line-height:1.5">AI scans your pantry and suggests meals — no store trip needed</div>
+    <button class="btn btn-primary" onclick="generateRecipes()">🔮 Generate Recipes</button>
+  </div>
+  <div class="card" style="margin-top:8px;background:var(--blue-bg)">
+    <div style="font-size:13px;color:var(--blue);line-height:1.6"><strong>💡 Note:</strong> Requires ANTHROPIC_API_KEY in .env. Add pantry items first for best results.</div>
+  </div>
+</div>
+<div id="recipe-loading" class="hidden" style="text-align:center;padding:64px 24px">
+  <div style="font-size:48px;margin-bottom:16px">👨‍🍳</div>
+  <div style="font-size:15px;font-weight:600">Chef AI is thinking...</div>
+  <div style="font-size:13px;color:var(--text-sec);margin-top:4px">Generating recipes from your pantry</div>
+</div>
+<div id="recipe-list" class="hidden"></div>`}
+
+async function generateRecipes(){
+  document.getElementById("recipe-content").classList.add("hidden");
+  document.getElementById("recipe-loading").classList.remove("hidden");
+  document.getElementById("recipe-list").classList.add("hidden");
+  try{
+    const data=await apiFetch("/recipes/suggest?count=5");
+    recipes=data.recipes||[];
+    document.getElementById("recipe-loading").classList.add("hidden");
+    document.getElementById("recipe-list").classList.remove("hidden");
+    document.getElementById("recipe-list").innerHTML=`
+      <div class="badge" style="background:var(--green-bg);color:var(--green);padding:8px 14px;font-size:13px;margin-bottom:12px">🍽️ ${recipes.length} recipes from your pantry</div>
+      ${recipes.map((r,i)=>`
+        <div class="card" style="cursor:pointer" onclick="toggleRecipe(${i})">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between">
+            <div style="flex:1"><div style="font-size:15px;font-weight:600;margin-bottom:4px">${r.title}</div>
+            <div style="font-size:12px;color:var(--text-sec);display:flex;gap:10px;flex-wrap:wrap">
+              ${r.cookTimeMin?`<span>⏱ ${r.cookTimeMin} min</span>`:""}${r.calories?`<span>🔥 ${r.calories} cal</span>`:""}${r.difficulty?`<span>📊 ${r.difficulty}</span>`:""}
+            </div></div>
+            <span style="font-size:18px;color:var(--text-muted)" id="arrow-${i}">▼</span>
+          </div>
+          ${r.usesExpiringItems?.length?`<div class="badge" style="background:var(--green-bg);color:var(--green);margin-top:8px">✅ Uses expiring: ${r.usesExpiringItems.join(", ")}</div>`:""}
+          <div id="recipe-detail-${i}" class="hidden" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border-light)">
+            ${r.description?`<p style="font-size:13px;color:var(--text-sec);margin-bottom:12px;line-height:1.5">${r.description}</p>`:""}
+            ${r.ingredients?.length?`<div style="margin-bottom:12px"><div class="label">Ingredients</div>${r.ingredients.map(g=>`<div style="font-size:13px;padding:3px 0">• ${g.amount||""} ${g.name} ${g.fromPantry?"✅":""}</div>`).join("")}</div>`:""}
+            ${r.steps?.length?`<div><div class="label">Steps</div>${r.steps.map((s,j)=>`<div style="font-size:13px;padding:4px 0;display:flex;gap:8px"><span class="badge" style="background:var(--bg-muted);color:var(--text-sec);font-size:10px;flex-shrink:0">${j+1}</span><span style="line-height:1.5">${typeof s==="string"?s:s.instruction||s}</span></div>`).join("")}</div>`:""}
+          </div>
+        </div>`).join("")}
+      <button class="btn-sec" style="width:100%;margin-top:8px" onclick="generateRecipes()">🔄 Generate New</button>`;
+  }catch(e){
+    alert("Recipe generation failed: "+e.message);
+    document.getElementById("recipe-loading").classList.add("hidden");
+    document.getElementById("recipe-content").classList.remove("hidden");
+  }
+}
+
+function toggleRecipe(i){
+  const el=document.getElementById(`recipe-detail-${i}`);
+  const arrow=document.getElementById(`arrow-${i}`);
+  el.classList.toggle("hidden");
+  arrow.textContent=el.classList.contains("hidden")?"▼":"▲";
+}
+
+// ========== SHOPPING ==========
+function renderShopping(){return`
+<div class="header"><div><h1>Shopping List</h1><p id="shop-count">Loading...</p></div>
+<button class="btn-sec" onclick="genShopList()" id="gen-shop-btn">🤖 AI Generate</button></div>
+<div style="display:flex;gap:8px;margin-bottom:12px">
+  <input id="shop-add" placeholder="Add item..." style="flex:1" onkeydown="if(event.key==='Enter')addShopItem()">
+  <button class="btn-sec" onclick="addShopItem()">+</button>
+</div>
+<div id="dont-buy"></div>
+<div id="shop-list"></div>`}
+
+async function loadShopping(){
+  try{
+    const data=await apiFetch("/shopping");
+    state.shopList=data.list;renderShopItems();
+  }catch(e){console.error(e)}
+}
+
+function renderShopItems(){
+  const items=state.shopList?.items||[];
+  const unchecked=items.filter(i=>!i.checked);
+  const checked=items.filter(i=>i.checked);
+  document.getElementById("shop-count").textContent=`${unchecked.length} items to buy`;
+  document.getElementById("dont-buy").innerHTML=state.dontBuy.length?`
+    <div class="card" style="background:var(--amber-bg);border:1px solid rgba(196,138,42,0.2)">
+      <div style="font-size:13px;font-weight:600;color:var(--amber);margin-bottom:6px">⚠️ Don't buy — already have</div>
+      ${state.dontBuy.map(i=>`<div style="font-size:12px;padding:2px 0">${i.name} — ${i.reason}</div>`).join("")}
+    </div>`:"";
+  document.getElementById("shop-list").innerHTML=items.length===0?`
+    <div class="empty"><div class="empty-icon">🛒</div><div style="font-size:15px;font-weight:500;color:var(--text-sec);margin-bottom:6px">No shopping list yet</div><div style="font-size:13px">Add items or let AI generate</div></div>
+  `:`${unchecked.length?`<div class="card"><div class="label">Need to buy</div>
+    ${items.map((it,idx)=>!it.checked?`
+      <div class="item-row" style="cursor:pointer" onclick="toggleShopItem(${idx})">
+        <div style="width:22px;height:22px;border-radius:50%;border:2px solid var(--border);flex-shrink:0"></div>
+        <div class="item-info"><div class="item-name">${it.name}</div><div class="item-meta">${it.reason||""}</div></div>
+        ${it.autoGenerated?'<span class="badge" style="background:var(--blue-bg);color:var(--blue)">AI</span>':""}
+      </div>`:"").join("")}
+  </div>`:""}
+  ${checked.length?`<div class="card" style="opacity:0.6"><div class="label">Done (${checked.length})</div>
+    ${items.map((it,idx)=>it.checked?`
+      <div class="item-row" style="cursor:pointer" onclick="toggleShopItem(${idx})">
+        <div style="width:22px;height:22px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;flex-shrink:0">✓</div>
+        <div style="font-size:14px;text-decoration:line-through;color:var(--text-muted)">${it.name}</div>
+      </div>`:"").join("")}
+  </div>`:""}`;
+}
+
+async function genShopList(){
+  document.getElementById("gen-shop-btn").textContent="...";
+  try{
+    const data=await apiFetch("/shopping/generate",{method:"POST",body:JSON.stringify({})});
+    state.shopList=data.list;state.dontBuy=data.dontBuy||[];renderShopItems();
+  }catch(e){alert(e.message)}
+  document.getElementById("gen-shop-btn").textContent="🤖 AI Generate";
+}
+
+async function addShopItem(){
+  const inp=document.getElementById("shop-add");
+  if(!inp.value.trim())return;
+  try{
+    const data=await apiFetch("/shopping/add",{method:"POST",body:JSON.stringify({name:inp.value})});
+    state.shopList=data.list;inp.value="";renderShopItems();
+  }catch(e){alert(e.message)}
+}
+
+async function toggleShopItem(idx){
+  try{
+    const data=await apiFetch(`/shopping/check/${idx}`,{method:"PUT",body:JSON.stringify({})});
+    state.shopList=data.list;renderShopItems();
+  }catch(e){alert(e.message)}
+}
+
+// ========== STATS ==========
+function renderStats(){return`
+<div class="header"><div><h1>Fridge Health</h1><p>Your kitchen performance</p></div></div>
+<div id="stats-content" style="text-align:center;padding:32px 0"><div style="font-size:14px;color:var(--text-sec)">Loading stats...</div></div>`}
+
+async function loadStats(){
+  try{
+    const[h,w,s]=await Promise.all([apiFetch("/stats/health"),apiFetch("/stats/waste"),apiFetch("/stats/summary")]);
+    const score=h.score||0;
+    const sColor=score>=70?"var(--green)":score>=40?"var(--amber)":"var(--red)";
+    document.getElementById("stats-content").innerHTML=`
+      <div class="card" style="text-align:center">
+        <div class="score-circle" style="border:6px solid ${sColor}">
+          <div style="font-size:32px;font-weight:700;color:${sColor}">${score}</div>
+          <div style="font-size:11px;color:var(--text-sec)">Score</div>
+        </div>
+        <div style="font-size:14px;font-weight:500;margin-bottom:4px">
+          ${score>=80?"🌟 Excellent!":score>=60?"👍 Good job!":score>=40?"⚡ Room to improve":"🔴 Needs attention"}
+        </div>
+        <div style="font-size:12px;color:var(--text-sec)">Based on the last 30 days</div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card" style="background:var(--green-bg)"><div class="stat-num" style="color:var(--green)">${h.stats?.estimatedSavings||"$0"}</div><div class="stat-label">Saved</div></div>
+        <div class="stat-card" style="background:var(--red-bg)"><div class="stat-num" style="color:var(--red)">${h.breakdown?.wasteRate||"0%"}</div><div class="stat-label">Waste rate</div></div>
+        <div class="stat-card" style="background:var(--blue-bg)"><div class="stat-num" style="color:var(--blue)">${s.activeItems||0}</div><div class="stat-label">Active items</div></div>
+        <div class="stat-card" style="background:var(--amber-bg)"><div class="stat-num" style="color:var(--amber)">${s.expiringSoon||0}</div><div class="stat-label">Expiring soon</div></div>
+      </div>
+      ${h.breakdown?`<div class="card"><div class="label">Breakdown</div>
+        ${[["Used before expiry",h.breakdown.usedBeforeExpiry,"var(--green)"],["Freshness score",h.breakdown.freshnessScore,"var(--blue)"],["Waste rate",h.breakdown.wasteRate,"var(--red)"]].map(([l,v,c])=>`
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-light)">
+            <span style="font-size:13px">${l}</span><span style="font-size:14px;font-weight:600;color:${c}">${v}</span>
+          </div>`).join("")}
+      </div>`:""}
+      ${w.tip?`<div class="card" style="background:var(--blue-bg)"><div style="font-size:13px;color:var(--blue);line-height:1.6">💡 ${w.tip}</div></div>`:""}`;
+  }catch(e){
+    document.getElementById("stats-content").innerHTML=`<div class="empty"><div style="font-size:14px;color:var(--text-sec)">Add some items first to see stats</div></div>`;
+  }
+}
+
+function logout(){
+  localStorage.removeItem("sp_token");localStorage.removeItem("sp_user");
+  state.user=null;state.token=null;render();
+}
+
+// INIT
+render();
+</script>
+</body>
+</html>
