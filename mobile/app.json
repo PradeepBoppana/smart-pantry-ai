@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Smart Pantry AI",
+    "slug": "smart-pantry-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "smartpantry",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FDFAF6"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.smartpantry.ai",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Smart Pantry needs camera access to scan your groceries and receipts."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FDFAF6"
+      },
+      "package": "com.smartpantry.ai",
+      "permissions": ["CAMERA"]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-camera",
+      "expo-image-picker",
+      "expo-secure-store"
+    ]
+  }
+}
