@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 
-const API_BASE = 'http://192.168.0.189:3000/api';
+const API_BASE = 'https://smart-pantry-ai-production.up.railway.app/api';
 
 let authToken: string | null = null;
 
