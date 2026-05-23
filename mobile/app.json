@@ -17,9 +17,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.smartpantry.ai",
+      "bundleIdentifier": "com.pradeepboppana.smartpantryai",
       "infoPlist": {
-        "NSCameraUsageDescription": "Smart Pantry needs camera access to scan your groceries and receipts."
+        "NSCameraUsageDescription": "Smart Pantry needs camera access to scan your groceries and receipts.",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -27,9 +28,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FDFAF6"
       },
-      "package": "com.smartpantry.ai",
+      "package": "com.pradeepboppana.smartpantryai",
       "permissions": [
-        "CAMERA"
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
       ]
     },
     "plugins": [
@@ -39,6 +41,14 @@
       "expo-secure-store",
       "expo-asset",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "11aa6a1f-72e5-4474-a1d3-8d868d4cd083"
+      }
+    }
   }
 }
