@@ -145,7 +145,7 @@ export default function AuthScreen() {
         </View>
 
         <Text style={styles.hint}>
-          Backend must be running on your computer
+          Your AI-powered kitchen companion
         </Text>
       </ScrollView>
     </KeyboardAvoidingView>

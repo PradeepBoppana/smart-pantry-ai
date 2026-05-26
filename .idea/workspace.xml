@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP">
-      <change beforePath="$PROJECT_DIR$/mobile/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/app.json" afterDir="false" />
-    </list>
+    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +142,7 @@
       <updated>1779404032404</updated>
       <workItem from="1779404033423" duration="15919000" />
       <workItem from="1779835461791" duration="5000" />
-      <workItem from="1779835475773" duration="1171000" />
+      <workItem from="1779835475773" duration="2667000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;🚀 Smart Pantry AI MVP&quot;">
       <option name="closed" value="true" />
@@ -250,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779835705534</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=" Add Privacy Mobile Smart Pantry AI MVP">
+      <option name="closed" value="true" />
+      <created>1779836656887</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1779836656887</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
