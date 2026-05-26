@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment="&quot;🚀 Mobile Smart Pantry AI MVP&quot;">
+    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,23 +29,23 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0" />
-      <entry key="M15" value="1.0" />
-      <entry key="M30" value="1.0" />
-      <entry key="H1" value="1.0" />
-      <entry key="H2" value="1.0" />
-      <entry key="H4" value="1.0" />
-      <entry key="D1" value="1.0" />
-      <entry key="W1" value="1.0" />
+      <entry key="MS100" value="1.005562697675754" />
+      <entry key="MS500" value="1.371453135347688" />
+      <entry key="S2" value="2.1346139661835184" />
+      <entry key="S5" value="2.5683020589869447" />
+      <entry key="S10" value="2.7660636973459667" />
+      <entry key="S30" value="2.9175593103013293" />
+      <entry key="S60" value="2.95819165837191" />
+      <entry key="M2" value="2.978946455581698" />
+      <entry key="M5" value="2.9915424240639386" />
+      <entry key="M10" value="2.9957651597686175" />
+      <entry key="M15" value="2.9971754263060717" />
+      <entry key="M30" value="2.9985870392351117" />
+      <entry key="H1" value="2.9992941553089825" />
+      <entry key="H2" value="3.0005434398388755" />
+      <entry key="H4" value="3.0297700333307898" />
+      <entry key="D1" value="3.5572310077521965" />
+      <entry key="W1" value="3.9198576353232624" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -67,23 +67,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9726549474122855" />
-      <entry key="MS500" value="0.9944701686732144" />
-      <entry key="S2" value="0.9986146661010289" />
-      <entry key="S5" value="0.9994456359721023" />
-      <entry key="S10" value="0.9997227795604651" />
-      <entry key="S30" value="0.9999075846464872" />
-      <entry key="S60" value="0.9999537912556196" />
-      <entry key="M2" value="0.9999768953608976" />
-      <entry key="M5" value="0.9999907580802994" />
-      <entry key="M10" value="0.999995379029473" />
-      <entry key="M15" value="0.9999969193506094" />
-      <entry key="M30" value="0.9999984596741184" />
-      <entry key="H1" value="0.9999992298367626" />
-      <entry key="H2" value="0.9999996149183071" />
-      <entry key="H4" value="0.9999998074591351" />
-      <entry key="D1" value="0.9999999679098532" />
-      <entry key="W1" value="0.9999999954156933" />
+      <entry key="MS100" value="0.9847935093912211" />
+      <entry key="MS500" value="1.3648091269579736" />
+      <entry key="S2" value="2.1319875637635683" />
+      <entry key="S5" value="2.5670768021091073" />
+      <entry key="S10" value="2.765413587426508" />
+      <entry key="S30" value="2.917333269979656" />
+      <entry key="S60" value="2.9580774009211512" />
+      <entry key="M2" value="2.978889011976489" />
+      <entry key="M5" value="2.9915193703263983" />
+      <entry key="M10" value="2.995753620123031" />
+      <entry key="M15" value="2.9971677303651907" />
+      <entry key="M30" value="2.9985831898416246" />
+      <entry key="H1" value="2.999292230255645" />
+      <entry key="H2" value="3.000542476878152" />
+      <entry key="H4" value="3.029769546234873" />
+      <entry key="D1" value="3.557230909644877" />
+      <entry key="W1" value="3.9198576196455805" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -95,31 +95,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/mobile/assets&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/Users/pradeepboppana/Library/Application Support/JetBrains/IntelliJIdea2026.1/node/versions/24.16.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/mobile/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/Users/pradeepboppana/Library/Application Support/JetBrains/IntelliJIdea2026.1/node/versions/24.16.0/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/mobile/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/mobile/assets" />
       <recent name="$PROJECT_DIR$/mobile" />
       <recent name="$PROJECT_DIR$" />
@@ -140,7 +142,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1779404032404</updated>
-      <workItem from="1779404033423" duration="14291000" />
+      <workItem from="1779404033423" duration="15919000" />
+      <workItem from="1779835461791" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;🚀 Smart Pantry AI MVP&quot;">
       <option name="closed" value="true" />
@@ -222,7 +225,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779497218810</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="&quot;🚀 Mobile Smart Pantry AI MVP&quot;">
+      <option name="closed" value="true" />
+      <created>1779499794088</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1779499794088</updated>
+    </task>
+    <task id="LOCAL-00012" summary=" Add Privacy Mobile Smart Pantry AI MVP">
+      <option name="closed" value="true" />
+      <created>1779499865335</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1779499865335</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +261,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot; Smart Pantry AI MVP&quot;" />
     <MESSAGE value="&quot; Mobile Smart Pantry AI MVP&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot; Mobile Smart Pantry AI MVP&quot;" />
+    <MESSAGE value=" Add Privacy Mobile Smart Pantry AI MVP" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Add Privacy Mobile Smart Pantry AI MVP" />
   </component>
 </project>

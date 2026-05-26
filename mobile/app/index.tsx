@@ -16,10 +16,13 @@ export default function AuthScreen() {
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    // Check if already logged in
     (async () => {
-      const token = await getToken();
-      if (token) router.replace('/(tabs)');
+      try {
+        const token = await getToken();
+        if (token) router.replace('/(tabs)');
+      } catch (e) {
+        console.log('Auth check failed:', e);
+      }
       setChecking(false);
     })();
   }, []);
