@@ -18,6 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.pradeepboppana.smartpantryai",
+      "buildNumber": "2",
       "infoPlist": {
         "NSCameraUsageDescription": "Smart Pantry needs camera access to scan your groceries and receipts.",
         "ITSAppUsesNonExemptEncryption": false

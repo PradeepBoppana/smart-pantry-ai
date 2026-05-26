@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/app.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +115,7 @@
     "nodejs_interpreter_path": "/Users/pradeepboppana/Library/Application Support/JetBrains/IntelliJIdea2026.1/node/versions/24.16.0/bin/node",
     "nodejs_package_manager_path": "npm",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/Users/pradeepboppana/IdeaProjects/smart-pantry-ai/mobile/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -144,6 +144,7 @@
       <updated>1779404032404</updated>
       <workItem from="1779404033423" duration="15919000" />
       <workItem from="1779835461791" duration="5000" />
+      <workItem from="1779835475773" duration="1171000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;🚀 Smart Pantry AI MVP&quot;">
       <option name="closed" value="true" />
@@ -241,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779499865335</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary=" Add Privacy Mobile Smart Pantry AI MVP">
+      <option name="closed" value="true" />
+      <created>1779835705534</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1779835705534</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
