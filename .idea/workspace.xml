@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/.expo/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/.expo/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/eas.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,23 +27,23 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6104745417281916" />
-      <entry key="MS500" value="2.2411739510306816" />
-      <entry key="S2" value="3.0820073901702756" />
-      <entry key="S5" value="3.542794527001281" />
-      <entry key="S10" value="3.752293604228896" />
-      <entry key="S30" value="3.912709829879997" />
-      <entry key="S60" value="3.9557321267550885" />
-      <entry key="M2" value="3.9777078041678364" />
-      <entry key="M5" value="3.991044806448532" />
-      <entry key="M10" value="3.9955159893905723" />
-      <entry key="M15" value="3.9970092322182817" />
-      <entry key="M30" value="3.998503901901569" />
-      <entry key="H1" value="3.9992525765514366" />
-      <entry key="H2" value="4.000522641728702" />
-      <entry key="H4" value="4.029759532966203" />
-      <entry key="D1" value="4.557228953015587" />
-      <entry key="W1" value="4.919857311866339" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000047556431864" />
+      <entry key="S2" value="1.083042863381032" />
+      <entry key="S5" value="1.3695906078184605" />
+      <entry key="S10" value="1.6079396415915486" />
+      <entry key="S30" value="1.8471366821984732" />
+      <entry key="S60" value="1.9204002836801353" />
+      <entry key="M2" value="1.9593749442632609" />
+      <entry key="M5" value="1.9835475225223025" />
+      <entry key="M10" value="1.9917396445248783" />
+      <entry key="M15" value="1.9944854878401514" />
+      <entry key="M30" value="1.9973007628068258" />
+      <entry key="H1" value="2.0143450668711362" />
+      <entry key="H2" value="2.2501763536539787" />
+      <entry key="H4" value="3.0087744740205715" />
+      <entry key="D1" value="5.618022105580583" />
+      <entry key="W1" value="6.760298927118851" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -77,23 +65,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2049630628416563" />
-      <entry key="MS500" value="2.1401675433814473" />
-      <entry key="S2" value="3.05480117575345" />
-      <entry key="S5" value="3.5316497676188545" />
-      <entry key="S10" value="3.7466685036553367" />
-      <entry key="S30" value="3.910821994980199" />
-      <entry key="S60" value="3.9547865335150987" />
-      <entry key="M2" value="3.977234582609003" />
-      <entry key="M5" value="3.99085541505873" />
-      <entry key="M10" value="3.995421276502285" />
-      <entry key="M15" value="3.996946086467119" />
-      <entry key="M30" value="3.9984723271119447" />
-      <entry key="H1" value="3.9992367886772646" />
-      <entry key="H2" value="4.0005147473268705" />
-      <entry key="H4" value="4.029755580142077" />
-      <entry key="D1" value="4.557228277285841" />
-      <entry key="W1" value="4.919857213671141" />
+      <entry key="MS100" value="0.9265880618903709" />
+      <entry key="MS500" value="0.9849119988764861" />
+      <entry key="S2" value="1.0783503928039015" />
+      <entry key="S5" value="1.3664819338919068" />
+      <entry key="S10" value="1.6058725586533413" />
+      <entry key="S30" value="1.8462760143563202" />
+      <entry key="S60" value="1.9199436544747186" />
+      <entry key="M2" value="1.9591396345933998" />
+      <entry key="M5" value="1.983451663174948" />
+      <entry key="M10" value="1.9916914207637904" />
+      <entry key="M15" value="1.9944532729504154" />
+      <entry key="M30" value="1.9972846219247298" />
+      <entry key="H1" value="2.0143369263360245" />
+      <entry key="H2" value="2.2501718173153877" />
+      <entry key="H4" value="3.00877146300408" />
+      <entry key="D1" value="5.618021232172371" />
+      <entry key="W1" value="6.760298783973178" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -154,7 +142,7 @@
       <updated>1779404032404</updated>
       <workItem from="1779404033423" duration="15919000" />
       <workItem from="1779835461791" duration="5000" />
-      <workItem from="1779835475773" duration="8369000" />
+      <workItem from="1779835475773" duration="8713000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;🚀 Smart Pantry AI MVP&quot;">
       <option name="closed" value="true" />
@@ -276,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779839285058</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary=" Add Privacy Mobile Smart Pantry AI MVP">
+      <option name="closed" value="true" />
+      <created>1779963816919</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1779963816919</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
