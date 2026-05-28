@@ -37,6 +37,11 @@
     },
     "plugins": [
       "expo-router",
+      "expo-camera",
+      "expo-image-picker",
+      "expo-secure-store",
+      "expo-asset",
+      "expo-font"
     ],
     "extra": {
       "router": {

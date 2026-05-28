@@ -2,7 +2,7 @@
   "name": "smart-pantry-ai",
   "version": "1.0.0",
   "description": "Smart Pantry AI — Your kitchen memory. AI-powered grocery tracking, expiry reminders, and recipe suggestions.",
-  "main": "src/server.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
