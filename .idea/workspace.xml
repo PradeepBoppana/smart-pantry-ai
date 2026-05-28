@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP" />
+    <list default="true" id="e469cfb9-d805-405a-9c7a-776060339ea7" name="Changes" comment=" Add Privacy Mobile Smart Pantry AI MVP">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +144,7 @@
       <updated>1779404032404</updated>
       <workItem from="1779404033423" duration="15919000" />
       <workItem from="1779835461791" duration="5000" />
-      <workItem from="1779835475773" duration="8713000" />
+      <workItem from="1779835475773" duration="9447000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;🚀 Smart Pantry AI MVP&quot;">
       <option name="closed" value="true" />
@@ -272,7 +274,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779963816919</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary=" Add Privacy Mobile Smart Pantry AI MVP">
+      <option name="closed" value="true" />
+      <created>1779963912681</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1779963912681</updated>
+    </task>
+    <task id="LOCAL-00018" summary=" Add Privacy Mobile Smart Pantry AI MVP">
+      <option name="closed" value="true" />
+      <created>1779964115796</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1779964115796</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
